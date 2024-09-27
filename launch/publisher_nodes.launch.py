@@ -46,7 +46,7 @@ def generate_launch_description():
         executable='tree_publisher',
         # name='tree',
         #namespace='crack',                 # namespace_app1というnamespaceを追加
-        remappings=[('input_image_topic', 'image')]    # chatterトピックをchatter_app1トピックにremap
+        remappings=[('input_image_topic', '/arm_camera/image_raw/decompressed')]    # chatterトピックをchatter_app1トピックにremap
     )
 
     pub_node6 = Node(
