@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 from glob import glob
 
-package_name = 'ros2_launch'
+package_name = 'uoa_launch'
 
 setup(
     name=package_name,

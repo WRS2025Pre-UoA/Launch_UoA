@@ -5,5 +5,5 @@
 
 ## 実行コード
 ```bash
-ros2 launch ros2_launch publisher_nodes.launch.py
+ros2 launch uoa_launch publisher_nodes.launch.py
 ```
