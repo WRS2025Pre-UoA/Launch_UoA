@@ -20,7 +20,7 @@ def generate_launch_description():
         executable='listener',
         name='listener',
         #namespace='pressure',                 # namespace_app2というnamespaceを追加
-        remappings=[('image_raw', 'qr_image')]    # chatterトピックをchatter_app2トピックにremap
+        remappings=[('image_raw', 'qr_image'),('qr_image','qr_result')]    # chatterトピックをchatter_app2トピックにremap
     )
 
     # publisher node "Rust"
@@ -49,6 +49,14 @@ def generate_launch_description():
         remappings=[('input_image_topic', 'image')]    # chatterトピックをchatter_app1トピックにremap
     )
 
+    pub_node6 = Node(
+        package='digital_twin_client',
+        executable='digital_twin_client',
+        # name='tree',
+        #namespace='crack',                 # namespace_app1というnamespaceを追加
+        remappings=[('send_image', 'send_topic')]    # chatterトピックをchatter_app1トピックにremap
+    )
+
     # pub_node6 = Node(
     #     package='temp_publisher',
     #     executable='temp_publisher',
@@ -75,6 +83,7 @@ def generate_launch_description():
     ld.add_action(pub_node3)
     ld.add_action(pub_node4)
     ld.add_action(pub_node5)
+    ld.add_action(pub_node6)
 
     # launch構成を返すようにする
     return ld
