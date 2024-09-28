@@ -20,7 +20,7 @@ def generate_launch_description():
         executable='listener',
         name='listener',
         #namespace='pressure',                 # namespace_app2というnamespaceを追加
-        remappings=[('image_raw', 'qr_image'),('qr_image','qr_result')]    # chatterトピックをchatter_app2トピックにremap
+        remappings=[('image_raw', 'qr_image'),('qr_image','qr_result_image'),("qr_value","qr_result_value")]    # chatterトピックをchatter_app2トピックにremap
     )
 
     # publisher node "Rust"
