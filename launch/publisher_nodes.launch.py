@@ -23,13 +23,13 @@ def generate_launch_description():
                     ("qr_value", "qr_result_value")]
     )
 
-    # publisher node "Rust"
-    # pub_node3 = Node(
-    #     package='rust',
-    #     executable='rust_subscriber',
-    #     name='rust',
-    #     remappings=[('image_topic', 'rust_image')]
-    # )
+    # publisher node "QR_M"
+    pub_node3 = Node(
+        package='manual_package',
+        executable='manual_publisher',
+        name='qr_manual',
+        remappings=[('manual_input_qr', 'qr_image_manual'),('text_topic','qr_result_value')]
+    )
 
     # publisher node "Crack"
     pub_node4 = Node(
@@ -72,7 +72,7 @@ def generate_launch_description():
     # LaunchDescriptionに、起動したいノードを追加する
     ld.add_action(pub_node1)
     ld.add_action(pub_node2)
-    # ld.add_action(pub_node3)
+    ld.add_action(pub_node3)
     ld.add_action(pub_node4)
     ld.add_action(pub_node5)
     ld.add_action(pub_node6)
