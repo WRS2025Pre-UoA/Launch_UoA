@@ -24,12 +24,12 @@ def generate_launch_description():
     )
 
     # publisher node "Rust"
-    pub_node3 = Node(
-        package='rust',
-        executable='rust_subscriber',
-        name='rust',
-        remappings=[('image_topic', 'rust_image')]
-    )
+    # pub_node3 = Node(
+    #     package='rust',
+    #     executable='rust_subscriber',
+    #     name='rust',
+    #     remappings=[('image_topic', 'rust_image')]
+    # )
 
     # publisher node "Crack"
     pub_node4 = Node(
@@ -55,21 +55,29 @@ def generate_launch_description():
         parameters=[{"host": "", "robot_id": ""}]  # サーバの値を設定する
     )
 
-    # pub_node7 = Node(
-    #     package='temp_publisher',
-    #     executable='temp_publisher',
-    #     name='temp',
-    #     remappings=[('image_raw', 'crack_image')]
-    # )
+    pub_node7 = Node(
+        package='photo',
+        executable='photo_sub_pub',
+        name='photo',
+        remappings=[('input_photo_image','situation_image')]
+    )
+
+    pub_node8 = Node(
+        package='bulb',
+        executable='bulb_param',
+        name='bulb',
+        remappings=[('input_bulb_image','bulb_image')]
+    )
 
     # LaunchDescriptionに、起動したいノードを追加する
     ld.add_action(pub_node1)
     ld.add_action(pub_node2)
-    ld.add_action(pub_node3)
+    # ld.add_action(pub_node3)
     ld.add_action(pub_node4)
     ld.add_action(pub_node5)
     ld.add_action(pub_node6)
-    # ld.add_action(pub_node7)
+    ld.add_action(pub_node7)
+    ld.add_action(pub_node8)
 
     # launch構成を返すようにする
     return ld
